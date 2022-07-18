@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:27:45 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/17 06:48:02 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:42:18 by vsergio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	main(int argc, char *argv[], char **env)
 {
 	int	proccess_id;
 	int	file[2];
-	int	**fd;
+	int	fd[argc - 4][2];
 	int	index;
 
-	initial_errors(fd, argc, file, argv);
+	initial_errors((int **)fd, argc, file, argv);
 	index = 0;
 	while (index < (argc - 3))
 	{
@@ -31,27 +31,19 @@ int	main(int argc, char *argv[], char **env)
 		{
 			if (index + 2 == 2)
 			{
-				// close_pipes(fd, -1, index);
-				printf("%i\n", file[0]);
-				close(fd[0][0]);
-				close(fd[1][0]);
-				close(fd[1][1]);
-				close(fd[2][0]);
+				close_first_pipes((int **)fd, index);
 				run_commands(file[0], fd[0][1], argv[index + 2], env);
 			}
 			else if (index + 2 == argc - 2)
 			{
-				// close_pipes(fd, index, -1);
-				close(fd[0][1]);
-				close(fd[1][0]);
-				close(fd[1][1]);
-				run_commands(fd[0][0], file[1], argv[argc - 2], env);
+				close_last_pipes((int **)fd, index);
+				run_commands(fd[index][0], file[1], argv[argc - 2], env);
 			}
-			// else
-			// {
-			// 	close_pipes(fd, index, index + 1);
-			// 	run_commands(fd[index][0], fd[index + 1][1], argv[index + 2], env);
-			// }
+			else
+			{
+				close_pipes((int **)fd, index);
+				run_commands(fd[index][0], fd[index + 1][1], argv[index + 2], env);
+			}
 		}
 		else
 			wait(&proccess_id);
