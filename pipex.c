@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:27:45 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/18 22:53:36 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:58:21 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	close_pipes_all(int **fd, int inpipe, int outpipe);
 
 int	main(int argc, char *argv[], char **env)
 {
-	int	proccess_id[argc - 3];
+	int	*proccess_id;
 	int	file[2];
 	int	fd[argc - 4][2];
 	int	index;
 
+	proccess_id = malloc(argc - 3);
 	initial_errors(argc, file, argv, fd);
 	index = 0;
 	proccess_id[index] = first_comand(argc, argv, file, fd);
@@ -38,6 +39,7 @@ int	main(int argc, char *argv[], char **env)
 	last_command(argc, argv, file, fd);
 	close_pipes(-1, argc, fd);
 	wait(proccess_id);
+	free(proccess_id);
 	return (0);
 }
 
