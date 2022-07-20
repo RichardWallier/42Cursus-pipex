@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:01:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/18 22:54:50 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:50:48 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ char	**get_arguments(char *argv)
 	index = 0;
 	while (args[index])
 	{
-		trimmed[index] = ft_strtrim(args[index], "'\"");
+		trimmed[index] = ft_strtrim2(args[index], "'\"");
 		free(args[index]);
 		index++;
 	}

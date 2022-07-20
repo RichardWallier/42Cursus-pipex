@@ -6,11 +6,11 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:18:09 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/15 15:59:41 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:58:57 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static size_t	set_end(char const *s, char c);
 

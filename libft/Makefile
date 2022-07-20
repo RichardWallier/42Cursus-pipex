@@ -10,9 +10,9 @@ SOURCES	+=	extrafunctions/ft_putendl_fd.c extrafunctions/ft_putnbr_fd.c
 SOURCES	+=	extrafunctions/ft_putstr_fd.c extrafunctions/ft_split.c
 SOURCES	+=	extrafunctions/ft_strdup.c extrafunctions/ft_striteri.c
 SOURCES	+=	extrafunctions/ft_strjoin.c extrafunctions/ft_strmapi.c
-SOURCES	+=	extrafunctions/ft_strtrim.c extrafunctions/ft_itoa.c
+SOURCES	+=	extrafunctions/ft_strtrim.c extrafunctions/ft_strtrim2.c
 SOURCES	+=	extrafunctions/ft_itoa_base.c extrafunctions/ft_count_digits_base.c
-SOURCES	+=	extrafunctions/ft_split2.c
+SOURCES	+=	extrafunctions/ft_split2.c extrafunctions/ft_itoa.c
 
 SOURCES	+=	get_next_line/get_next_line_utils.c get_next_line/get_next_line_bonus.c
 SOURCES	+=	get_next_line/get_next_line_utils_bonus.c get_next_line/get_next_line.c
