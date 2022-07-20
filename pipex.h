@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:07:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/18 21:50:48 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:08:22 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int		run_commands(int infile, int outfile, char *cmds, char **env);
 char	*find_path(char *command, char **env);
 void	broken_pipe(void);
 void	wrong_path(void);
-void	close_pipes(int used_pipe, int argc, int fd[argc - 4][2]);
-void	close_first_pipes(int used_pipe, int argc, int fd[argc - 4][2]);
-void	close_last_pipes(int used_pipe, int argc, int fd[argc - 4][2]);
+void	close_pipes(int used_pipe, int argc, int **fd);
+void	close_first_pipes(int used_pipe, int argc, int **fd);
+void	close_last_pipes(int used_pipe, int argc, int **fd);
 void	open_error(void);
 void	wait_error(void);
-void	initial_errors(int argc, int file[2], char *argv[], int fd[argc - 4][2]);
-int		first_comand(int argc, char *argv[], int file[2], int fd[argc - 4][2]);
-int		last_command(int argc, char *argv[], int file[2], int fd[argc - 4][2]);
+void	initial_errors(int argc, int file[2], char *argv[], int **fd);
+int		first_comand(int argc, char *argv[], int file[2], int **fd);
+int		last_command(int argc, char *argv[], int file[2], int **fd);
 void	fork_error(int proccess_id);
 
 #endif

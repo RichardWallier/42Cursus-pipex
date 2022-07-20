@@ -6,23 +6,16 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:01:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/20 15:50:48 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:35:38 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	initial_errors(int argc, int file[2], char *argv[], int fd[argc - 4][2])
+void	initial_errors(int argc, int file[2], char *argv[], int **fd)
 {
 	int index;
 
-	index = 0;
-	while (index < argc - 4)
-	{
-		if (pipe(fd[index]) < 0)
-			broken_pipe();
-		index++;
-	}
 	if (argc < 5)
 		usage_error();
 	file[0] = open(argv[1], O_RDONLY);
@@ -31,7 +24,7 @@ void	initial_errors(int argc, int file[2], char *argv[], int fd[argc - 4][2])
 		open_error();
 }
 
-void	close_first_pipes(int used_pipe, int argc, int fd[argc - 4][2])
+void	close_first_pipes(int used_pipe, int argc, int **fd)
 {
 	int index;
 
@@ -52,7 +45,7 @@ void	close_first_pipes(int used_pipe, int argc, int fd[argc - 4][2])
 	return ;
 }
 
-void	close_last_pipes(int used_pipe, int argc, int fd[argc - 4][2])
+void	close_last_pipes(int used_pipe, int argc, int **fd)
 {
 	int index;
 
@@ -73,7 +66,7 @@ void	close_last_pipes(int used_pipe, int argc, int fd[argc - 4][2])
 	}
 }
 
-void	close_pipes(int used_pipe, int argc, int fd[argc - 4][2])
+void	close_pipes(int used_pipe, int argc, int **fd)
 {
 	int index;
 
