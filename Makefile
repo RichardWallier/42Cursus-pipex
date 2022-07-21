@@ -5,7 +5,7 @@ OBJECTS =	$(SOURCES:.c=.o)
 LIBFT_PATH =./libft
 LIBFT =		$(LIBFT_PATH)/libft.a
 
-NAME =	./pipex
+NAME =	pipex
 
 CC = gcc
 
@@ -16,7 +16,7 @@ RM 	= rm -f
 .c.o:
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) -I $(LIBFT_PATH)
 
-all:	$(NAME)
+all:	$(NAME) $(LIBFT)
 
 $(NAME):	$(OBJECTS) $(LIBFT)
 	$(CC) $(FLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)

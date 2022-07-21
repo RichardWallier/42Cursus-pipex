@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:01:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/20 22:22:34 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/20 22:49:36 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	initial_errors(int argc, int file[2], char *argv[], int **fd)
 	if (argc < 5)
 		usage_error();
 	file[0] = open(argv[1], O_RDONLY);
-	file[1] = open(argv[argc - 1], O_WRONLY);
+	file[1] = open(argv[argc - 1], O_WRONLY, O_TRUNC);
 	if (file[0] < 0 || file[1] < 0)
 		open_error();
 }
@@ -104,7 +104,7 @@ char	*find_path(char *command, char **env)
 	index = 0;
 	while (env[index])
 	{
-		if (strncmp("PATH=", env[index++], 5) == 0)
+		if (ft_strncmp("PATH=", env[index++], 5) == 0)
 			path = ft_split(&env[index - 1][5], ':');
 	}
 	index = 0;
