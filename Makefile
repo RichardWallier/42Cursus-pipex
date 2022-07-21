@@ -1,30 +1,28 @@
-SOURCES =	pipex.c pipex_utils.c errorhandling.c
+SOURCES =	pipex.c pipex_utils.c errorhandling.c commands.c
 
 OBJECTS =	$(SOURCES:.c=.o)
 
 LIBFT_PATH =./libft
 LIBFT =		$(LIBFT_PATH)/libft.a
 
-
-NAME =	pipex
+NAME =	./pipex
 
 CC = gcc
 
-FLAGS = -g
+FLAGS = -Wall -Werror -Wextra
 
 RM 	= rm -f
 
 .c.o:
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o) -I $(LIBFT_PATH)
 
-all:	$(NAME) $(LIBFT)
+all:	$(NAME)
 
-$(NAME):	$(OBJECTS)	$(LIBFT)
+$(NAME):	$(OBJECTS) $(LIBFT)
 	$(CC) $(FLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_PATH)
-	$(MAKE) -C $(LIBFT_PATH) bonus
 
 clean:
 		$(MAKE) -C $(LIBFT_PATH) clean
@@ -33,3 +31,7 @@ clean:
 fclean:		clean
 			$(MAKE) -C $(LIBFT_PATH) fclean
 			$(RM) $(NAME)
+
+re:	fclean	all
+
+.PHONY: all $(NAME) clean fclean re

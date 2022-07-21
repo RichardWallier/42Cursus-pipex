@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:01:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/20 16:35:38 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/20 22:22:34 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ void	initial_errors(int argc, int file[2], char *argv[], int **fd)
 {
 	int index;
 
+	index = 0;
+	while (index < argc - 3)
+	{
+		if (pipe(fd[index++]) == -1)
+			broken_pipe();
+	}
 	if (argc < 5)
 		usage_error();
 	file[0] = open(argv[1], O_RDONLY);
@@ -136,7 +142,6 @@ int	run_commands(int infile, int outfile, char *cmds, char **env)
 char	**get_arguments(char *argv)
 {
 	char	**args;
-	char	*temp;
 	char	**trimmed;
 	int		index;
 
