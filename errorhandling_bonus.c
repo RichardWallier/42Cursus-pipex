@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 15:00:12 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 10:44:30 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:48:34 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	wrong_path(void)
 void	usage_error(void)
 {
 	errno = EINVAL;
-	perror("usage: ./pipex \"infile\" \"cmd1\" \"cmd2\" \"outfile\"");
+	perror("usage: ./pipex infile \"cmd1\" \"cmd2\" \"cmdn\" outfile");
 	exit(errno);
 }
 
