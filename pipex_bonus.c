@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:27:45 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 10:44:40 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:29:35 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int	main(int argc, char *argv[], char **env)
 	middle_commands(argc, fd, argv, env);
 	last_command(argc, argv, file, fd);
 	close_pipes(-1, argc, fd);
+	wait(NULL);
 	index = 0;
 	while (index < argc - 3)
 		free(fd[index++]);
 	free(fd);
-	wait(NULL);
+	close_files(file, argv);
 	free(proccess_id);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:40:55 by rwallier          #+#    #+#             */
-/*   Updated: 2022/06/04 09:35:45 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:38:26 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ char	*make_line_no_nl(char *line, char *buffer)
 	char	*temp;
 
 	if (!line)
-		line = ft_substr(buffer, 0, ft_strlen(buffer));
+		line = ft_substr(buffer, 0, ft_strlen2(buffer));
 	else
 	{
 		temp = line;
 		line = ft_strjoin(line, buffer);
 		free(temp);
 	}
-	if (!ft_strlen(line))
+	if (!ft_strlen2(line))
 	{
 		free(line);
 		return (NULL);
@@ -67,14 +67,14 @@ char	*make_line_with_nl(char *buffer, char **trash, char *line)
 	char	*temp;
 
 	temp = ft_substr(buffer, 0, end_line(buffer) + 1);
-	*trash = ft_substr(buffer, ft_strlen(temp),
-			ft_strlen(&buffer[ft_strlen(temp)]));
+	*trash = ft_substr(buffer, ft_strlen2(temp),
+			ft_strlen2(&buffer[ft_strlen2(temp)]));
 	free(buffer);
 	buffer = NULL;
 	buffer = line;
 	if (!line)
 	{
-		line = ft_substr(temp, 0, ft_strlen(temp));
+		line = ft_substr(temp, 0, ft_strlen2(temp));
 		free(temp);
 		temp = NULL;
 	}
@@ -82,7 +82,7 @@ char	*make_line_with_nl(char *buffer, char **trash, char *line)
 		line = ft_strjoin(line, temp);
 	free(temp);
 	free(buffer);
-	if (!ft_strlen(line))
+	if (!ft_strlen2(line))
 	{
 		free(line);
 		return (NULL);
@@ -116,11 +116,11 @@ int	treat_trash(char **trash, char **line)
 	{
 		buffer = *trash;
 		temp = ft_substr(buffer, 0, end_line(buffer) + 1);
-		*trash = ft_substr(buffer, ft_strlen(temp),
-				ft_strlen(&buffer[ft_strlen(temp)]));
+		*trash = ft_substr(buffer, ft_strlen2(temp),
+				ft_strlen2(&buffer[ft_strlen2(temp)]));
 		free(buffer);
 		buffer = NULL;
-		*line = ft_substr(temp, 0, ft_strlen(temp));
+		*line = ft_substr(temp, 0, ft_strlen2(temp));
 		free(temp);
 		temp = NULL;
 		return (1);
@@ -128,7 +128,7 @@ int	treat_trash(char **trash, char **line)
 	else
 	{
 		buffer = *line;
-		*line = ft_substr(*trash, 0, ft_strlen(*trash));
+		*line = ft_substr(*trash, 0, ft_strlen2(*trash));
 		free(*trash);
 		*trash = NULL;
 		return (0);

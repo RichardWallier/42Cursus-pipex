@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/22 16:53:39 by rwallier          #+#    #+#             */
+/*   Updated: 2022/07/22 16:53:41 by rwallier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 int	first_comand(int argc, char *argv[], int file[2], int fd[2])
 {
 	extern char	**environ;
-	int	proccess_id;
+	int			proccess_id;
 
 	proccess_id = fork();
 	if (proccess_id == 0)
@@ -17,7 +29,7 @@ int	first_comand(int argc, char *argv[], int file[2], int fd[2])
 int	last_command(int argc, char *argv[], int file[2], int **fd)
 {
 	extern char	**environ;
-	int	proccess_id;
+	int			proccess_id;
 
 	proccess_id = fork();
 	if (proccess_id == 0)

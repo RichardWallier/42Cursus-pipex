@@ -6,13 +6,13 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:49:33 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/15 14:59:26 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:38:43 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen2(const char *str)
 {
 	size_t	index;
 
@@ -30,8 +30,8 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 
 	if (!str)
 		return (NULL);
-	if (len > ft_strlen(str))
-		ret = (char *)malloc(ft_strlen(str) + 1);
+	if (len > ft_strlen2(str))
+		ret = (char *)malloc(ft_strlen2(str) + 1);
 	else
 		ret = (char *)malloc(len + 1);
 	if (!ret)

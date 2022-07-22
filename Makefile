@@ -1,5 +1,8 @@
-SOURCES =	pipex.c pipex_utils.c errorhandling.c
-SOURCES_BONUS =	pipex_bonus.c pipex_utils_bonus.c errorhandling_bonus.c commands_bonus.c
+SOURCES =			pipex.c pipex_utils.c errorhandling.c
+
+SOURCES_BONUS =		pipex_bonus.c pipex_utils_bonus.c
+SOURCES_BONUS +=	errorhandling_bonus.c commands_bonus.c
+SOURCES_BONUS +=	pipes_bonus.c
 
 OBJECTS =	$(SOURCES:.c=.o)
 OBJECTS_BONUS =	$(SOURCES_BONUS:.c=.o)
@@ -13,7 +16,7 @@ NAME_BONUS = pipex_bonus
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 
 RM 	= rm -f
 
