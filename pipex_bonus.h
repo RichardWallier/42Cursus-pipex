@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:07:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 10:42:27 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:31:21 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <errno.h>
-# include "libft/libft.h"
+# include "libft.h"
 
-void	initial_errors(int argc, int file[2], char *argv[], int fd[2]);
+void	initial_errors(int argc, int file[2], char *argv[], int **fd);
 
-int		first_comand(int argc, char *argv[], int file[2], int fd[2]);
+int		first_comand(int argc, char *argv[], int file[2], int **fd);
 
-int		last_command(int argc, char *argv[], int file[2], int fd[2]);
+void	middle_commands(int argc, int **fd, char *argv[], char **env);
+
+int		last_command(int argc, char *argv[], int file[2], int **fd);
 
 char	*get_path(void);
 

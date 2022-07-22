@@ -1,6 +1,24 @@
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-int	first_comand(int argc, char *argv[], int file[2], int fd[2])
+void	middle_commands(int argc, int **fd, char *argv[], char **env)
+{
+	int	index;
+	int	proccess_id;
+
+	index = 0;
+	while (index < (argc - 5))
+	{
+		proccess_id = fork();
+		if (proccess_id == 0)
+		{
+			close_pipes(index, argc, fd);
+			run_commands(fd[index][0], fd[index + 1][1], argv[index + 3], env);
+		}
+		index++;
+	}
+}
+
+int	first_comand(int argc, char *argv[], int file[2], int **fd)
 {
 	extern char	**environ;
 	int	proccess_id;

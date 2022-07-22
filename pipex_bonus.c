@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:27:45 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 10:42:59 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:44:40 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	main(int argc, char *argv[], char **env)
 {
-	int	proccess_id[2];
+	int	*proccess_id;
 	int	file[2];
-	int	fd[2];
+	int	**fd;
+	int	index;
 
+	fd = (int **)malloc((argc - 3) * (sizeof(int *)));
+	index = 0;
+	while (index < argc - 3)
+		fd[index++] = (int *)malloc(2 * sizeof(int));
+	proccess_id = malloc(2 * sizeof(int));
 	initial_errors(argc, file, argv, fd);
-	proccess_id[0] = fork();
-	if (proccess_id[0] == 0)
-	{
-		close(fd[0]);
-		run_commands(file[0], fd[1], argv[2], env);
-	}
-	proccess_id[1] = fork();
-	if (proccess_id[1] == 0)
-	{
-		close(fd[1]);
-		run_commands(fd[0], file[1], argv[2], env);
-	}
-	close(fd[0]);
-	close(fd[1]);
-	waitpid(proccess_id[0], NULL, 0);
-	waitpid(proccess_id[1], NULL, 0);
+	first_comand(argc, argv, file, fd);
+	middle_commands(argc, fd, argv, env);
+	last_command(argc, argv, file, fd);
+	close_pipes(-1, argc, fd);
+	index = 0;
+	while (index < argc - 3)
+		free(fd[index++]);
+	free(fd);
+	wait(NULL);
+	free(proccess_id);
 	return (0);
 }
