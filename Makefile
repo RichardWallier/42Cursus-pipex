@@ -9,6 +9,8 @@ LIBFT =		$(LIBFT_PATH)/libft.a
 
 NAME =	pipex
 
+NAME_BONUS = pipex_bonus
+
 CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
@@ -26,8 +28,10 @@ $(NAME):	$(OBJECTS) $(LIBFT)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_PATH)
 
-bonus:	$(OBJECTS_BONUS) $(LIBFT)
-	$(CC) $(FLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
+$(NAME_BONUS): $(OBJECTS_BONUS) $(LIBFT)
+	$(CC) $(FLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME_BONUS)
+
+bonus:	$(NAME_BONUS)
 
 clean:
 	$(MAKE) -C $(LIBFT_PATH) clean
