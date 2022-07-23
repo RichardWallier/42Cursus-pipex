@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:07:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 10:42:27 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:52:10 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <errno.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 void	initial_errors(int argc, int file[2], char *argv[], int fd[2]);
 
