@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 15:07:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 18:07:04 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:57:14 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ void	close_files(int file[2], char *argv[]);
 int 	heredoc(char *argv[]);
 
 void	fork_error(int proccess_id);
+
+void	open_heredoc(char *argv[], int file[2]);
 
 #endif

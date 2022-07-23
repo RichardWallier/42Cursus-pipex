@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:01:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 18:27:37 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:16:36 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	initial_errors(int argc, int file[2], char *argv[], int **fd)
 	if (argc < 5)
 		usage_error();
 	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-		file[0] = heredoc(argv);
+		open_heredoc(argv, file);
 	else
 		file[0] = open(argv[1], O_RDONLY);
-	file[1] = open(argv[argc - 1], O_WRONLY, O_TRUNC);
+	file[1] = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (file[0] < 0 || file[1] < 0)
 		open_error();
 }
 
-int heredoc(char *argv[])
+void	open_heredoc(char *argv[], int file[2])
 {
 	int		here_doc;
 	int		infile;
@@ -54,8 +54,7 @@ int heredoc(char *argv[])
 	if (line)
 		free(line);
 	close(infile);
-	infile = open("tempfile", O_RDONLY);
-	return (infile);
+	file[0] = open("tempfile", O_RDONLY);
 }
 
 char	*find_path(char *command, char **env)
