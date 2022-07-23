@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:01:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 21:47:45 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 22:44:27 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,25 @@ void	open_heredoc(char *argv[], int file[2])
 	int		here_doc;
 	int		infile;
 	char	*line;
+	char	*temp;
 
 	infile = open("tempfile", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	here_doc = open("here_doc", O_RDONLY);
 	if (infile == -1 || here_doc == -1)
 		open_error();
 	line = get_next_line(here_doc);
-	while (ft_strncmp(line, argv[2], ft_strlen(argv[2])) && line != NULL)
+	temp = ft_strtrim(line, "\n");
+	while (line != NULL && ft_strcmp(temp, argv[2]))
 	{
+		if (temp)
+			free(temp);
 		ft_putstr_fd(line, infile);
 		free(line);
-		line = NULL;
 		line = get_next_line(here_doc);
+		temp = ft_strtrim(line, "\n");
 	}
-	if (line)
-		free(line);
+	free(line);
+	free(temp);
 	close(infile);
 	file[0] = open("tempfile", O_RDONLY);
 }

@@ -5,6 +5,7 @@ SOURCES	+=	libc/ft_memmove.c libc/ft_memset.c extrafunctions/ft_putchar_fd.c
 SOURCES	+=	libc/ft_strlcpy.c libc/ft_strlen.c libc/ft_strncmp.c
 SOURCES	+=	libc/ft_strnstr.c libc/ft_strrchr.c libc/ft_substr.c
 SOURCES	+=	libc/ft_tolower.c libc/ft_toupper.c libc/ft_strlcat.c libc/ft_strchr.c
+SOURCES	+=	libc/ft_strcmp.c
 
 SOURCES	+=	extrafunctions/ft_putendl_fd.c extrafunctions/ft_putnbr_fd.c
 SOURCES	+=	extrafunctions/ft_putstr_fd.c extrafunctions/ft_split.c
@@ -37,7 +38,7 @@ CC	=	cc
 
 AR_RC	=	ar rc
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-g -Wall -Werror -Wextra
 
 RM	=	rm -f
 

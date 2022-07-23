@@ -6,7 +6,7 @@
 /*   By: vsergio <vsergio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:34:25 by vsergio           #+#    #+#             */
-/*   Updated: 2022/07/20 15:32:54 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 22:08:33 by rwallier         ###   ########.fr       */
 /*   Updated: 2022/05/04 14:33:16 by vsergio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -63,6 +63,8 @@ int		ft_tolower(int arg);
 char	*ft_strchr(const char *s, int c);
 
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
+
+int		ft_strcmp(const char *s1, const char *s2);
 
 void	*ft_memmove(void *dest, const void *src, size_t len);
 
