@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:54:07 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 21:15:57 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:39:27 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,12 @@ void	middle_commands(int argc, int **fd, char *argv[], char **env)
 	int	cmd_num;
 
 	index = 0;
+	cmd_num = argc - 5;
+	argv_index = 0;
 	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
 	{
-		cmd_num = argc - 6;
-		argv_index = 1;
-	}
-	else
-	{
-		cmd_num = argc - 5;
-		argv_index = 0;
+		cmd_num--;
+		argv_index++;
 	}
 	while (index < cmd_num)
 	{
@@ -36,7 +33,8 @@ void	middle_commands(int argc, int **fd, char *argv[], char **env)
 		if (proccess_id == 0)
 		{
 			close_pipes(index, argc, fd);
-			run_commands(fd[index][0], fd[index + 1][1], argv[argv_index + 3], env);
+			run_commands(fd[index][0], fd[index + 1][1],
+				argv[argv_index + 3], env);
 		}
 		index++;
 		argv_index++;

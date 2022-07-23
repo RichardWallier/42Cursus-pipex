@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:55:37 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 18:42:27 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:37:52 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,8 @@ void	close_pipes(int used_pipe, int argc, int **fd)
 
 void	close_files(int file[2], char *argv[])
 {
-	char *test;
-
-	test = argv[0];
-	// if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-		// unlink("./tempfile");
+	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+		unlink("./tempfile");
 	close(file[0]);
 	close(file[1]);
 }
-

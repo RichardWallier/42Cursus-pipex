@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:27:45 by rwallier          #+#    #+#             */
-/*   Updated: 2022/07/22 10:42:59 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:21:58 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[], char **env)
 	if (proccess_id[1] == 0)
 	{
 		close(fd[1]);
-		run_commands(fd[0], file[1], argv[2], env);
+		run_commands(fd[0], file[1], argv[3], env);
 	}
 	close(fd[0]);
 	close(fd[1]);
