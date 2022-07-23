@@ -44,6 +44,7 @@ clean:
 fclean:		clean
 	$(MAKE) -C $(LIBFT_PATH) fclean
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 
 re:	fclean	all
 
